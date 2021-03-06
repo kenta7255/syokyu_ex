@@ -1,0 +1,556 @@
+@charset "utf-8";
+// max-width
+// pc基準
+$sp: 650px;
+$tb: 1024px;
+
+// color
+$base: #444444;
+$main: #21a937;
+$maker: #99e5a5;
+
+* {
+  box-sizing: border-box;
+}
+
+@mixin tb {
+  @media (max-width: ($tb)) {
+    @content;
+  }
+}
+
+@mixin sp {
+  @media (max-width: ($sp)) {
+    @content;
+  }
+}
+
+body {
+  font-family: "Noto Sans JP", sans-serif;
+  color: $base;
+}
+
+a {
+  text-decoration: none;
+  color: $base;
+  font-weight: bold;
+}
+
+li {
+  list-style: none;
+}
+
+// 共通レイアウト
+.phone-num {
+  font-size: 24px;
+  color: $main;
+  font-weight: bold;
+  @include tb {
+    font-size: 20px;
+  }
+  @include sp {
+    font-size: 16px;
+  }
+  .phone-icon {
+    margin-right: 5px;
+    @include tb {
+      height: 20px;
+      width: 20px;
+    }
+    @include sp {
+      height: 15px;
+      width: 15px;
+    }
+  }
+}
+
+.logo {
+  @include tb {
+    width: 210px;
+  }
+  @include sp {
+    width: 157px;
+  }
+}
+
+.section-title {
+  font-size: 24px;
+  @include tb {
+    font-size: 20px;
+  }
+  @include sp {
+    font-size: 20px;
+  }
+  .maker-green {
+    background: linear-gradient(transparent 70%, $maker 60%);
+  }
+}
+
+.maker-green {
+  background: linear-gradient(transparent 70%, $maker 60%);
+}
+
+.wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1180px;
+  height: 100%;
+  @include tb {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+.header {
+  height: 130px;
+  @include sp {
+    height: 120px;
+  }
+  &-inner {
+    // 余白系
+    max-width: 1180px;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 21px;
+    padding-right: 11px;
+    // 配置系
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include sp {
+      padding: 15px;
+      display: block;
+      text-align: left;
+    }
+    .open-time {
+      font-size: 14px;
+      @include tb {
+        font-size: 12px;
+      }
+      @include sp {
+        font-size: 10px;
+        margin-top: 5px;
+      }
+    }
+    .phone-num {
+      margin-top: 8px;
+      text-align: right;
+      @include sp {
+        text-align: left;
+      }
+      a {
+        color: $main;
+      }
+      @media(min-width: $sp){
+        a[href^="tel:"]{
+          pointer-events: none;
+        }
+      }
+    }
+  }
+}
+
+.mv {
+  height: 947px;
+  background-image: url(img/1474084_m.png);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  @include sp {
+    height: calc(100vh - 120px);
+  }
+  .copy {
+    font-size: 28px;
+    writing-mode: vertical-rl;
+    position: absolute;
+    background: white;
+    letter-spacing: 6px;
+    @include tb {
+      font-size: 26px;
+      letter-spacing: 4px;
+    }
+    @include sp {
+      font-size: 24px;
+      letter-spacing: 2px;
+    }
+    &:first-child {
+      top: 133px;
+      left: 393px;
+      // レスポンシブを考えると高さ、幅指定でなくパディング
+      padding: 18px 37px 99px 37px;
+      @include tb {
+        left: 180px;
+        padding: 18px 25px 74px 25px;
+      }
+      @include sp {
+        left: 130px;
+        top: 100px;
+        padding: 18px 20px 59px 20px;
+      }
+    }
+    &:last-child {
+      top: 133px;
+      left: 211px;
+      padding: 18px 37px 65px 37px;
+      @include tb {
+        left: 80px;
+        padding: 18px 25px 40px 25px;
+      }
+      @include sp {
+        top: 100px;
+        left: 40px;
+        padding: 18px 20px 30px 20px;
+      }
+      .green {
+        color: $main;
+      }
+    }
+  }
+}
+
+.message {
+  height: 664px;
+  .wrapper {
+    height: 100%;
+    padding: 162px 0 82px 31px;
+    @include sp {
+      padding: 50px 15px 50px 15px;
+    }
+    display: flex;
+    @include tb {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+    @include sp {
+      display: block;
+    }
+    .message-left {
+      width: 41.5%;
+      @include sp {
+        width: 100%;
+        margin-bottom: 30px;
+      }
+      .section-title {
+        margin-top: 31px;
+        line-height: 2.5;
+        @include tb {
+          line-height: 1.5;
+        }
+        @include sp {
+          line-height: 1;
+        }
+      }
+      p {
+        margin-top: 15px;
+        line-height: 2.5;
+        @include tb {
+          font-size: 15px;
+          line-height: 1.5;
+        }
+      }
+    }
+    .message-right {
+      margin-left: 44px;
+      @include tb {
+        margin-left: 22px;
+      }
+      @include sp {
+        margin-left: 0;
+      }
+      width: 58.5%;
+      @include sp {
+        width: 100%;
+      }
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.contents {
+  background: #f5fcf8;
+  height: 1520px;
+  @include tb {
+    height: 1400px;
+  }
+  @include sp {
+    height: 2200px;
+  }
+  .treatment {
+    .wrapper {
+      padding-top: 80px;
+      text-align: center;
+      .section-title {
+        margin-bottom: 68px;
+        @include sp {
+          margin-bottom: 40px;
+        }
+      }
+      .notice {
+        @include sp {
+          font-size: 14px;
+          text-align: left;
+        }
+      }
+      .cards {
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+        @include sp {
+          display: block;
+        }
+        .card {
+          border: 2px solid #c9c9c9;
+          border-radius: 10px;
+          width: 32%;
+          height: 591px;
+          @include tb {
+            height: 500px;
+          }
+          @include sp {
+            width: 100%;
+            height: 400px;
+            margin-bottom: 30px;
+          }
+          background: white;
+          margin-left: 1.7%;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          &:first-child {
+            margin-left: 0;
+          }
+          &-info {
+            .card-title {
+              margin-top: 40px;
+              font-size: 24px;
+              @include tb {
+                font-size: 20px;
+              }
+            }
+            p {
+              padding-top: 39px;
+              padding-left: 31px;
+              padding-right: 20px;
+              line-height: 2.5;
+              font-weight: bold;
+              text-align: left;
+              @include tb {
+                font-size: 14px;
+                line-height: 1.5;
+                padding-left: 15px;
+                padding-right: 10px;
+                padding-top: 20px;
+              }
+            }
+          }
+
+          img {
+            width: 187px;
+            height: auto;
+            margin-left: auto;
+            margin-right: auto;
+          }
+        }
+      }
+    }
+  }
+}
+
+.news {
+  .wrapper {
+    text-align: center;
+    @include sp {
+      text-align: left;
+    }
+    padding-top: 82px;
+    .section-title {
+      margin-bottom: 70px;
+      @include sp {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+    }
+    .news {
+      height: 390px;
+      background: white;
+      box-shadow: 0px 3px 6px #00000029;
+      border-radius: 30px;
+      @include sp {
+        height: 500px;
+      }
+      &-contents {
+        display: flex;
+        @include sp {
+          display: block;
+        }
+        align-items: center;
+        margin-right: 92px;
+        margin-left: 69px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        border-bottom: 2px solid #e7e7e7;
+        font-weight: bold;
+        @include tb {
+          margin-right: 45px;
+          margin-left: 35px;
+        }
+        @include sp {
+          padding-top: 10px;
+          padding-bottom: 10px;
+        }
+        &:first-child {
+          padding-top: 49px;
+        }
+        time {
+          color: $main;
+          margin-right: 28px;
+          @include tb {
+            font-size: 14px;
+            margin-right: 14px;
+          }
+        }
+        .category-box {
+          width: 100px;
+          @include sp {
+            width: 70px;
+            text-align: center;
+            margin-top: 5px;
+            margin-bottom: 5px;
+          }
+          .category {
+            font-size: 12px;
+            width: 79px;
+            @include sp {
+              width: 50px;
+            }
+            margin-right: 28px;
+            white-space: nowrap;
+            background: $base;
+            color: white;
+            padding-top: 4px;
+            padding-bottom: 4px;
+          }
+        }
+        .content {
+          text-align: left;
+          @include tb {
+            font-size: 14px;
+          }
+        }
+      }
+      a {
+        padding: 36px 80px 44px;
+        display: block;
+        text-align: right;
+        @include tb {
+          font-size: 14px;
+        }
+        @include sp {
+          padding: 15px 30px;
+        }
+      }
+    }
+  }
+}
+
+.access {
+  height: 610px;
+  @include sp {
+    height: 1000px;
+  }
+  .wrapper {
+    padding-top: 172px;
+    @include sp {
+      padding-top: 100px;
+    }
+    .access-contents {
+      display: flex;
+      @include sp {
+        display: block;
+      }
+      .map {
+        width: 51.5%;
+        @include sp {
+          width: 100%;
+        }
+        iframe {
+          width: 100%;
+        }
+      }
+      .access-info {
+        width: 48.5%;
+        @include sp {
+          width: 100%;
+        }
+        margin-top: 24px;
+        margin-left: 36px;
+        @include sp {
+          margin-left: 0;
+        }
+        .logo {
+          margin-bottom: 25px;
+        }
+        .adress {
+          margin-bottom: 25px;
+          @include tb {
+            font-size: 14px;
+          }
+        }
+        .phone-num {
+          margin-bottom: 29px;
+          @include tb {
+            font-size: 18px;
+          }
+        }
+        .time-table {
+          width: 100%;
+          border-top: 2px solid #e7e7e7;
+          border-bottom: 2px solid #e7e7e7;
+          @include tb {
+            font-size: 12px;
+          }
+          .none {
+            height: 22.5px;
+          }
+          .border {
+            border-right: 2px solid #e7e7e7;
+          }
+
+          .open {
+            height: 90px;
+          }
+
+          .close {
+            height: 40px;
+          }
+
+          .day {
+            padding-left: 28.5px;
+            @include tb {
+              padding-left: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+footer {
+  height: 173px;
+  @include sp {
+    height: 80px;
+  }
+  p {
+    float: right;
+    @include tb {
+      font-size: 14px;
+    }
+    @include sp {
+      font-size: 12px;
+    }
+  }
+}
